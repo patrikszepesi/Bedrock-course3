@@ -1,0 +1,24 @@
+# Create a new directory for the layer
+mkdir boto3_layer
+cd boto3_layer
+
+# Create a python directory. AWS Lambda expects Python packages in a python directory for Python runtimes
+mkdir python
+
+# Create a virtual environment
+python3 -m venv venv
+
+# Activate the virtual environment
+source venv/bin/activate
+
+# Install the latest boto3 into the python directory
+pip install boto3 -t ./python
+
+# Deactivate the virtual environment
+deactivate
+
+# Zip the package
+zip -r boto3_layer.zip ./python
+
+# Optionally, remove the virtual environment after packaging
+# rm -r venv
